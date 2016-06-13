@@ -1,0 +1,12 @@
+( define ( sqrt3 x ) 
+	( define ( average x y )
+			 ( / ( + x y ) 2 ) )
+	( define ( improve guess ) 
+			 ( average guess ( / x guess ) ) )
+	( define ( good-enough? guess previous ) 
+			 ( < ( abs ( - guess previous ) ) 0.001 ) )
+	( define ( sqrt-iter guess previous )
+			 ( if ( good-enough? guess previous ) 
+				  guess 
+				  ( sqrt-iter ( improve guess x ) guess ) ) )
+	( sqrt-iter 1.0 x ) )
