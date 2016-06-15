@@ -1,0 +1,5 @@
+( define ( f-recur n )
+		 ( cond ( ( < n 3 ) n )
+				( else ( + ( f-recur ( - n 1 ) )
+										( * ( f-recur ( - n 2 ) ) 2 )
+										( * ( f-recur ( - n 3 ) ) 3 ) ) ) ) )

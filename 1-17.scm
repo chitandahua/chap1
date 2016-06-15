@@ -1,0 +1,8 @@
+(define (product a b)
+  (define (even? x) (= (remainder x 2) 0))
+  (define (double x) (* x 2))
+  (define (halve x) (/ x 2))
+  (cond (( = b 0 ) 0 )
+		((even? b) (double (product a (halve b))))
+				   ;(product (double a) (halve b))
+		(else (+ a (product a (- b 1))))))

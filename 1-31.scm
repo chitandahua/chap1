@@ -1,0 +1,25 @@
+(define (product-iter term a next b)
+  (define (iter a result)
+	(if (> a b)
+		result
+		(iter (next a) (* result (term a)))))
+  (iter a 1))
+(define (product-recu term a next b)
+  (if (> a b)
+	  1
+	  (* (term a)
+		 (product-recu term (next a) next b))))
+
+(define (factorial1 n)
+  (define (next x) (+ x 1))
+  (define (term x) x)
+  (product-iter term 1 next n))
+(define (factorial2 n)
+  (define (next x) (+ x 1))
+  (define (term x) x)
+  (product-recu term 1 next n))
+
+(define (wallis a b)
+  (define (next x) (+ x 2))
+  (define (term x) (- 1 (/ 1.0 (* x x))))
+  (* 4 (product-iter term a next b)))
